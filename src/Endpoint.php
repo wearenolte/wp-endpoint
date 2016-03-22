@@ -1,6 +1,7 @@
 <?php namespace Leean;
 
 use Leean\Endpoints\Filters;
+use Leean\Endpoints\Contract;
 
 /**
  * Class that creates the default behavior used to register a new endpoint and
@@ -8,7 +9,7 @@ use Leean\Endpoints\Filters;
  *
  * @package Leean;
  */
-abstract class AbstractEndpoint {
+class Endpoint {
 
 	/**
 	 * The path of the endpoint to be created.
@@ -16,13 +17,6 @@ abstract class AbstractEndpoint {
 	 * @var string
 	 */
 	protected $endpoint = '/leean';
-
-	/**
-	 * HTTP Verb used on the API.
-	 *
-	 * @var string
-	 */
-	protected $http_verb = \WP_REST_Server::READABLE;
 
 	/**
 	 * Register the endpoint on the WP Rest API and initializes the variables.
@@ -42,11 +36,6 @@ abstract class AbstractEndpoint {
 	private function set_variables() {
 		$this->namespace = apply_filters( Filters::API_NAMESPACE, 'leean', $this->endpoint );
 		$this->version = apply_filters( Filters::API_VERSION, 'v1', $this->endpoint );
-		$this->options = [
-			'methods' => $this->http_verb,
-			'callback' => [ $this, 'endpoint_callback' ],
-			'args' => $this->endpoint_args(),
-		];
 	}
 
 	/**
@@ -58,7 +47,7 @@ abstract class AbstractEndpoint {
 		register_rest_route(
 			$this->namespace . '/' . $this->version,
 			$this->endpoint,
-			$this->options
+			$this->endpoint_options()
 		);
 	}
 
@@ -78,13 +67,32 @@ abstract class AbstractEndpoint {
 	}
 
 	/**
+	 * Function that return the options used on the endpoint can be override
+	 * by the class that inherints from this class.
+	 *
+	 * @since 0.1.0
+	 * @return array An associative array or an array of arrays with the params
+	 *               to setup the endpoint, by default creates a GET endpoint.
+	 */
+	protected function endpoint_options() {
+		return [
+			'methods' => \WP_REST_Server::READABLE,
+			'callback' => [ $this, 'endpoint_callback' ],
+			'args' => $this->endpoint_args(),
+		];
+	}
+
+	/**
 	 * This is the callback where all the logic of the endpoint is handled here you
 	 * recieve a $request param that can be used to handle queries or any other
 	 * operation to generate the endpoint.
 	 *
+	 * @since 0.1.0
 	 * @param \WP_REST_Request $request Contains data from the request.
 	 */
-	abstract public function endpoint_callback( \WP_REST_Request $request );
+	public function endpoint_callback( \WP_REST_Request $request ) {
+		return [];
+	}
 
 	/**
 	 * Arguments that the endpoint can recieve in this way we can customize this
@@ -95,5 +103,7 @@ abstract class AbstractEndpoint {
 	 * @since 0.1.0
 	 * @return Array
 	 */
-	abstract public function endpoint_args();
+	public function endpoint_args() {
+		return [];
+	}
 }
