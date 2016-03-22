@@ -118,4 +118,15 @@ abstract class AbstractEndpoint {
 	public function endpoint_args() {
 		return [];
 	}
+
+	/**
+	 * Function that allow to apply the filter on the response.
+	 *
+	 * @param Array $response The response or data to be applied.
+	 * @param Int   $id The id to be pass into the filter.
+	 * @since 0.1.0
+	 */
+	protected function filter_data( $response, $id ) {
+		return apply_filters( $this->get_api_data_filter_name(), $response, $id );
+	}
 }
