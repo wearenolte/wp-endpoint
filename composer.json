@@ -30,7 +30,7 @@
       "./vendor/bin/phpcs --config-set show_progress 0",
       "./vendor/bin/phpcs --config-set colors 1"
     ],
-    "post-install-cmd": [ "@installSnifferj" ],
+    "post-install-cmd": [ "@installSniffer" ],
     "post-update-cmd": [ "@installSniffer" ],
     "ci": [
       "phpcs src/*.php src/**/*.php"
