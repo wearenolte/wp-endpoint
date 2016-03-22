@@ -71,7 +71,7 @@ abstract class AbstractEndpoint {
 	 *
 	 * @return string The filter created
 	 */
-	protected function crete_filter_name(){
+	protected function get_filter_name(){
 		$endpoint_name = trim( $this->endpoint );
 		$endpoint_name = str_replace( ['-', '/'], '_', $endpoint_name );
 		return Filters::API_DATA . $endpoint_name;
