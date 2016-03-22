@@ -63,6 +63,21 @@ abstract class AbstractEndpoint {
 	}
 
 	/**
+	 * Helper function that creates a filter based on the endpoint
+	 * created. That will help to have dynamic filters and to remove an extra
+	 * param from the default filters.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return string The filter created
+	 */
+	protected function crete_filter_name(){
+		$endpoint_name = trim( $this->endpoint );
+		$endpoint_name = str_replace( ['-', '/'], '_', $endpoint_name );
+		return Filters::API_DATA . $endpoint_name;
+	}
+
+	/**
 	 * This is the callback where all the logic of the endpoint is handled here you
 	 * recieve a $request param that can be used to handle queries or any other
 	 * operation to generate the endpoint.
