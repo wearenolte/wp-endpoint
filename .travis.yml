@@ -14,4 +14,4 @@ cache:
   - vendor
 
 script:
-  - composer test
+  - composer ci
