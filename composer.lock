@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1d1344e9ebebb11556ea017d1bc6a7ef",
-    "content-hash": "38164ca77a10fceb594030c1e68cdaa1",
+    "hash": "892eb74e37d230febaf0ae424fbba5f4",
+    "content-hash": "6c7d46cbb6ae2a4a4086561204aefccb",
     "packages": [],
     "packages-dev": [
         {
@@ -87,7 +87,7 @@
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "0.9.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
@@ -124,7 +124,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "wp-coding-standards/wpcs": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
