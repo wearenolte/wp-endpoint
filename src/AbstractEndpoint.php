@@ -9,7 +9,7 @@ use Leean\Endpoints\Contract;
  *
  * @package Leean;
  */
-class Endpoint {
+abstract class AbstractEndpoint {
 
 	/**
 	 * The path of the endpoint to be created.
@@ -17,6 +17,18 @@ class Endpoint {
 	 * @var string
 	 */
 	protected $endpoint = '/leean';
+
+	/**
+	 * Static method as user interface for the class that creates a new object
+	 * of this class to make sure we can access to instance properties and methods.
+	 *
+	 * @since 0.1.0
+	 */
+	public static function init() {
+		$child = get_called_class();
+		$endpoint = new $child;
+		$endpoint->create();
+	}
 
 	/**
 	 * Register the endpoint on the WP Rest API and initializes the variables.
@@ -60,7 +72,7 @@ class Endpoint {
 	 *
 	 * @return string The filter created
 	 */
-	protected function get_filter_name() {
+	protected function get_api_data_filter_name() {
 		$endpoint_name = trim( $this->endpoint );
 		$endpoint_name = str_replace( [ '-', '/' ], '_', $endpoint_name );
 		return Filters::API_DATA . $endpoint_name;

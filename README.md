@@ -38,21 +38,16 @@ After you added the dependency on your module you need to create a new class tha
 <?php
 use Leean\Endpoint;
 
-class customEndpoint extends Endpoint {
+class customEndpoint extends AbstractEndpoint {
 
 	protected $endpoint = '/customEndpoint';
 
-	public static function init() {
-		$author_endpoint = new self();
-		$author_endpoint->create();
-	}
-
-
 	public function endpoint_callback( \WP_REST_Request $request ) {
-		return [
+		$data = [
 		    'data' => 'Hi',
 		    'count' => 10
 		];
+        return apply_filters( $this->get_api_data_filter_name(), $data );
 	}
 
 	public function endpoint_args() {
