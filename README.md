@@ -20,7 +20,7 @@ Or by adding the following lines on your `composer.json` file
 }
 ```
 
-This will download the files from the [packagist site](https://packagist.org/packages/moxie-leean/wp-endpoints-view)
+This will download the files from the [packagist site](https://packagist.org/packages/moxie-leean/wp-endpoint)
 and set you up with the latest version located on master branch of the repository.
 
 After that you can include the `autoload.php` file in order to
@@ -36,7 +36,7 @@ After you added the dependency on your module you need to create a new class tha
 
 ```php
 <?php
-use Leean\Endpoint;
+use Leean\AbstractEndpoint;
 
 class customEndpoint extends AbstractEndpoint {
 
@@ -47,7 +47,7 @@ class customEndpoint extends AbstractEndpoint {
 		    'data' => 'Hi',
 		    'count' => 10
 		];
-        return apply_filters( $this->get_api_data_filter_name(), $data );
+		return $this->filter_data( $data );
 	}
 
 	public function endpoint_args() {
