@@ -73,9 +73,21 @@ abstract class AbstractEndpoint {
 	 * @return string The filter created
 	 */
 	protected function get_api_data_filter_name() {
-		$endpoint_name = trim( $this->endpoint );
-		$endpoint_name = str_replace( [ '-', '/' ], '_', $endpoint_name );
-		return Filters::API_DATA . $endpoint_name;
+		return Filters::API_DATA . $this->filter_format( $this->endpoint );
+	}
+
+	/**
+	 * Creates a function that can be used on the child class to format a string
+	 * into a filter name.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @param String $str The string to be formated.
+	 * @return String
+	 */
+	protected function filter_format( $str = '' ) {
+		$endpoint_name = trim( $str );
+		return str_replace( [ '-', '/' ], '_', $endpoint_name );
 	}
 
 	/**
