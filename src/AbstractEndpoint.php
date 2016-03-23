@@ -80,7 +80,7 @@ abstract class AbstractEndpoint {
 	 * Creates a function that can be used on the child class to format a string
 	 * into a filter name.
 	 *
-	 * @since 0.3.0
+	 * @since 0.2.0
 	 *
 	 * @param String $str The string to be formated.
 	 * @return String
