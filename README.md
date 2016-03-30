@@ -51,7 +51,8 @@ class customEndpoint extends AbstractEndpoint {
 	public function endpoint_callback( \WP_REST_Request $request ) {
 		$data = [
 		    'data' => 'Hi',
-		    'count' => 10
+		    'count' => 10,
+            'id' => $request->get_param( 'id' )
 		];
 		return $this->filter_data( $data );
 	}
@@ -60,8 +61,8 @@ class customEndpoint extends AbstractEndpoint {
 		return [
 			'id' => [
 				'required' => true,
-				'sanitize_callback' => function ( $author_id, $request, $key ) {
-					return absint( $author_id );
+				'sanitize_callback' => function ( $id ) {
+					return absint( $id );
 				},
 			],
 		];
