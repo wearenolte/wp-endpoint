@@ -16,7 +16,7 @@ abstract class AbstractEndpoint {
 	 *
 	 * @var string
 	 */
-	protected $endpoint = '/leean';
+	protected $endpoint = '/lean';
 
 	/**
 	 * Static method as user interface for the class that creates a new object
@@ -138,7 +138,7 @@ abstract class AbstractEndpoint {
 	 * @param Int   $id The id to be pass into the filter.
 	 * @since 0.1.0
 	 */
-	protected function filter_data( $response, $id ) {
+	protected function filter_data( $response = [], $id = 0 ) {
 		return apply_filters( $this->get_api_data_filter_name(), $response, $id );
 	}
 }
