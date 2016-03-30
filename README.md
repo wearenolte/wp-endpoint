@@ -1,6 +1,7 @@
 # WP Endpoint
 
-> Class that allow easy creation of endpoints under the leean namespace.
+> Class that allow easy creation of WordPress endpoints, by default uses
+> the leen namespace for the creation of a new endpoint. 
 
 The class provides a set of defined methods and mechanism to register a new endpoint more easily and by reusing same component across other modules.
 
