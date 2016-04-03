@@ -1,8 +1,14 @@
 # WP Endpoint
 
-> Class that allow easy creation of endpoints under the leean namespace.
+> Class that makes the process to create a new WordPress endpoint more
+> easily.
 
-The class provides a set of defined methods and mechanism to register a new endpoint more easily and by reusing same component across other modules.
+By default the endpoint are under the leen namespace with the version
+number 1 this data can be overwritten using any of the [filters](#filters) specified
+below. 
+
+The class provides a set of defined methods and mechanism to register a new endpoint, wich makes
+the process of define a new endpoint pretty straightforward.
 
 ## Getting Started
 
@@ -45,7 +51,8 @@ class customEndpoint extends AbstractEndpoint {
 	public function endpoint_callback( \WP_REST_Request $request ) {
 		$data = [
 		    'data' => 'Hi',
-		    'count' => 10
+		    'count' => 10,
+            'id' => $request->get_param( 'id' )
 		];
 		return $this->filter_data( $data );
 	}
@@ -54,8 +61,8 @@ class customEndpoint extends AbstractEndpoint {
 		return [
 			'id' => [
 				'required' => true,
-				'sanitize_callback' => function ( $author_id, $request, $key ) {
-					return absint( $author_id );
+				'sanitize_callback' => function ( $id ) {
+					return absint( $id );
 				},
 			],
 		];
