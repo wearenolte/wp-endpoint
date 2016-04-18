@@ -129,3 +129,4 @@ class MyCollection extends AbstractCollectionEndpoint {
 - `ln_endpoints_api_namespace`, This allow you to overwrite the default namespace used on the API definition.
 - `ln_endpoints_api_version`, This filter allow you to change the version number of the API.
 - `ln_endpoints_data_${api}`, where `${api}` is the name of your endpoint for instance in the case above: `ln_endpoints_data_customEndpoint`.
+- `ln_endpoints_collection_item`, to do custom formatting for collection items.
