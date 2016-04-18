@@ -51,18 +51,4 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	protected function format_item( $item ) {
 		return apply_filters( Filter::ITEM_FORMAT, $item, $item, $this->args );
 	}
-
-	/**
-	 * Clean up and make sure we don't deliver post with password, privates and
-	 * some other datat that might be sensible on the API. This medhod overrides
-	 * the default mechanism inherint from the parent class.
-	 *
-	 * @Override
-	 *
-	 * @since 0.1.0
-	 * @return array an array with the accepted arguments and options per each argument.
-	 */
-	public function endpoint_args() {
-		return [];
-	}
 }
