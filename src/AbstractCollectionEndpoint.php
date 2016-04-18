@@ -51,4 +51,23 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	protected function format_item( $item ) {
 		return apply_filters( Filter::ITEM_FORMAT, $item, $item, $this->args );
 	}
+
+	/**
+	 * Returns the data related with the pagination, useful to
+	 * iterate over the data in the FE on a infinite scroll or load more
+	 * buttons since we know if there are more pages ahead.
+	 *
+	 * @return array The array with the formated data.
+	 */
+	protected function get_pagination( $found, $pages ) {
+		$total = absint( $found );
+		$meta = [
+			'items' => $total,
+			'pages' => 0,
+		];
+		if ( $total > 0 ) {
+			$meta['pages'] = $pages;
+		}
+		return $meta;
+	}
 }
