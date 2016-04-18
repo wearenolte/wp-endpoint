@@ -38,6 +38,7 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 
 	/**
 	 * WP_Query Loop that has been triggered from the endpoint.
+	 * Calls format_item for each row and get_pagination.
 	 */
 	abstract protected function loop();
 
