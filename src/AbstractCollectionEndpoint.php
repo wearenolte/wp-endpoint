@@ -57,6 +57,8 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	 * iterate over the data in the FE on a infinite scroll or load more
 	 * buttons since we know if there are more pages ahead.
 	 *
+	 * @param int $found Number of posts found.
+	 * @param int $pages Number of pages.
 	 * @return array The array with the formated data.
 	 */
 	protected function get_pagination( $found, $pages ) {
