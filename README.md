@@ -93,7 +93,9 @@ For instance to define a new slug parameter with a different HTTP verb and reuse
 
 `parent::endpoint_options` is going to return the default options defined on `Endpoint` class if you don't want to redeclare the options for a GET request.
 
-There is also an abstract class available for collections that supports pagination.
+## Collections
+
+There is also an abstract class available for collections.
 
 ```php
 <?php namespace Lean\Endpoints;
@@ -110,14 +112,13 @@ class MyCollection extends AbstractCollectionEndpoint {
 		$this->query = new \WP_Query( $this->args );
 		while ( $this->query->have_posts() ) {
 			$this->query->the_post();
-			$data[] = $this->format_item( $this->query->post );
+			$data[] = $this->query->post;
 		}
 
 		wp_reset_postdata();
 
 		return [
-			'data' => $data,
-			'pagination' => $this->get_pagination(),
+			'data' => $data
 		];
 	}
 }
