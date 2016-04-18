@@ -11,16 +11,6 @@ use Leean\Endpoints\Filters;
 abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 
 	/**
-	 * Path of the new endpoint.
-	 *
-	 * @Override
-	 *
-	 * @since 0.1.0
-	 * @var String
-	 */
-	protected $endpoint = '/leean';
-
-	/**
 	 * Array that holds all the shared arguments used for query the site.
 	 *
 	 * @since 0.1.0
