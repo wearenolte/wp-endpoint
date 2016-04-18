@@ -29,23 +29,6 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	protected $args = [];
 
 	/**
-	 * Object that holds the current queried object on the site.
-	 *
-	 * @since 0.1.0
-	 * @var \WP_Query
-	 */
-	protected $query = null;
-
-	/**
-	 * Flag used to carry the value of the filter and avoid to call the function
-	 * N times inside of the loop.
-	 *
-	 * @since 0.1.0
-	 * @var bool
-	 */
-	protected $format_item = false;
-
-	/**
 	 * Function inherint from the parant Abstract class that is called once the
 	 * endpoint has been initiated and the method that returns the data delivered
 	 * to the endpoint.
@@ -77,25 +60,6 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	 */
 	protected function format_item( $item ) {
 		return apply_filters( Filter::ITEM_FORMAT, $item, $item, $this->args );
-	}
-
-	/**
-	 * Returns the data related with the pagination, useful to
-	 * iterate over the data in the FE on a infinite scroll or load more
-	 * buttons since we know if there are more pages ahead.
-	 *
-	 * @return array The array with the formated data.
-	 */
-	protected function get_pagination() {
-		$total = absint( $this->query->found_posts );
-		$meta = [
-			'items' => $total,
-			'pages' => 0,
-		];
-		if ( $total > 0 ) {
-			$meta['pages'] = $this->query->max_num_pages;
-		}
-		return $meta;
 	}
 
 	/**
