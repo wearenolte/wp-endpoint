@@ -66,9 +66,7 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	/**
 	 * WP_Query Loop that has been triggered from the endpoint.
 	 */
-	protected function loop() {
-
-	}
+	abstract protected function loop();
 
 	/**
 	 * This function allow to format every item that is returned to the endpoint
@@ -78,7 +76,7 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	 * @param object $item The unformatted post object.
 	 */
 	protected function format_item( $item ) {
-
+		return apply_filters( Filter::ITEM_FORMAT, $item, $item, $this->args );
 	}
 
 	/**
@@ -89,7 +87,15 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	 * @return array The array with the formated data.
 	 */
 	protected function get_pagination() {
-
+		$total = absint( $this->query->found_posts );
+		$meta = [
+			'items' => $total,
+			'pages' => 0,
+		];
+		if ( $total > 0 ) {
+			$meta['pages'] = $this->query->max_num_pages;
+		}
+		return $meta;
 	}
 
 	/**
