@@ -118,7 +118,11 @@ class MyCollection extends AbstractCollectionEndpoint {
 		wp_reset_postdata();
 
 		return [
-			'data' => $data
+			'data' => $data,
+			'pagination' => $this->get_pagination(
+				$this->query->found_posts,
+				$this->query->max_num_pages
+			)
 		];
 	}
 }
