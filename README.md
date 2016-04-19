@@ -5,7 +5,7 @@
 
 By default the endpoint are under the leen namespace with the version
 number 1 this data can be overwritten using any of the [filters](#filters) specified
-below. 
+below.
 
 The class provides a set of defined methods and mechanism to register a new endpoint, wich makes
 the process of define a new endpoint pretty straightforward.
@@ -93,10 +93,44 @@ For instance to define a new slug parameter with a different HTTP verb and reuse
 
 `parent::endpoint_options` is going to return the default options defined on `Endpoint` class if you don't want to redeclare the options for a GET request.
 
+## Collections
+
+There is also an abstract class available for collections.
+
+```php
+<?php namespace Lean\Endpoints;
+
+use Leean\AbstractCollectionEndpoint;
+
+class MyCollection extends AbstractCollectionEndpoint {
+
+	protected $endpoint = '/my-collection';
+
+	protected function loop() {
+		$data = [];
+
+		$this->query = new \WP_Query( $this->args );
+		while ( $this->query->have_posts() ) {
+			$this->query->the_post();
+			$data[] = $this->query->post;
+		}
+
+		wp_reset_postdata();
+
+		return [
+			'data' => $data,
+			'pagination' => $this->get_pagination(
+				$this->query->found_posts,
+				$this->query->max_num_pages
+			)
+		];
+	}
+}
+```
+
 ### Filters
 
 - `ln_endpoints_api_namespace`, This allow you to overwrite the default namespace used on the API definition.
 - `ln_endpoints_api_version`, This filter allow you to change the version number of the API.
 - `ln_endpoints_data_${api}`, where `${api}` is the name of your endpoint for instance in the case above: `ln_endpoints_data_customEndpoint`.
-
-
+- `ln_endpoints_collection_item`, to do custom formatting for collection items.
