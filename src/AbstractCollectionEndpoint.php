@@ -1,7 +1,7 @@
-<?php namespace Leean;
+<?php namespace Lean;
 
-use Leean\AbstractEndpoint;
-use Leean\Endpoints\Filters;
+use Lean\AbstractEndpoint;
+use Lean\Endpoints\Filters;
 
 /**
  * Class that implements the behaviour of a collection of posts.

@@ -15,18 +15,18 @@ the process of define a new endpoint pretty straightforward.
 The easiest way to install this package is by using composer from your terminal:
 
 ```bash
-composer require moxie-leean/wp-endpoint
+composer require moxie-lean/wp-endpoint
 ```
 
 Or by adding the following lines on your `composer.json` file
 
 ```json
 "require": {
-  "moxie-leean/wp-endpoint": "dev-master"
+  "moxie-lean/wp-endpoint": "dev-master"
 }
 ```
 
-This will download the files from the [packagist site](https://packagist.org/packages/moxie-leean/wp-endpoint)
+This will download the files from the [packagist site](https://packagist.org/packages/moxie-lean/wp-endpoint)
 and set you up with the latest version located on master branch of the repository.
 
 After that you can include the `autoload.php` file in order to
@@ -42,7 +42,7 @@ After you added the dependency on your module you need to create a new class tha
 
 ```php
 <?php
-use Leean\AbstractEndpoint;
+use Lean\AbstractEndpoint;
 
 class customEndpoint extends AbstractEndpoint {
 
@@ -100,7 +100,7 @@ There is also an abstract class available for collections.
 ```php
 <?php namespace Lean\Endpoints;
 
-use Leean\AbstractCollectionEndpoint;
+use Lean\AbstractCollectionEndpoint;
 
 class MyCollection extends AbstractCollectionEndpoint {
 
