@@ -1,13 +1,13 @@
-<?php namespace Leean;
+<?php namespace Lean;
 
-use Leean\Endpoints\Filters;
-use Leean\Endpoints\Contract;
+use Lean\Endpoints\Filters;
+use Lean\Endpoints\Contract;
 
 /**
  * Class that creates the default behavior used to register a new endpoint and
  * also the same logic that is used across all lean PHP modules.
  *
- * @package Leean;
+ * @package Lean;
  */
 abstract class AbstractEndpoint {
 
