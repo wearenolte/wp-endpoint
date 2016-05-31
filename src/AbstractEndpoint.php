@@ -46,8 +46,8 @@ abstract class AbstractEndpoint {
 	 * @since 0.1.0
 	 */
 	private function set_variables() {
-		$this->namespace = apply_filters( Filters::API_NAMESPACE, 'leean', $this->endpoint );
-		$this->version = apply_filters( Filters::API_VERSION, 'v1', $this->endpoint );
+		$this->namespace = apply_filters( Filters::API_NAMESPACE, 'lean', $this->endpoint );
+		$this->version = apply_filters( Filters::API_VERSION, 'v2', $this->endpoint );
 	}
 
 	/**
