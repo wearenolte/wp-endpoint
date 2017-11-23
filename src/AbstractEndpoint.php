@@ -1,13 +1,13 @@
-<?php namespace Lean;
+<?php namespace Nolte;
 
-use Lean\Endpoints\Filters;
-use Lean\Endpoints\Contract;
+use Nolte\Endpoints\Filters;
+use Nolte\Endpoints\Contract;
 
 /**
  * Class that creates the default behavior used to register a new endpoint and
- * also the same logic that is used across all lean PHP modules.
+ * also the same logic that is used across all Nolte PHP modules.
  *
- * @package Lean;
+ * @package Nolte;
  */
 abstract class AbstractEndpoint {
 
@@ -16,7 +16,7 @@ abstract class AbstractEndpoint {
 	 *
 	 * @var string
 	 */
-	protected $endpoint = '/lean';
+	protected $endpoint = '/nolte';
 
 	/**
 	 * Static method as user interface for the class that creates a new object
@@ -46,7 +46,7 @@ abstract class AbstractEndpoint {
 	 * @since 0.1.0
 	 */
 	private function set_variables() {
-		$this->namespace = apply_filters( Filters::API_NAMESPACE, 'lean', $this->endpoint );
+		$this->namespace = apply_filters( Filters::API_NAMESPACE, 'nolte', $this->endpoint );
 		$this->version = apply_filters( Filters::API_VERSION, 'v2', $this->endpoint );
 	}
 

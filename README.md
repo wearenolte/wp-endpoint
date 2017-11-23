@@ -15,18 +15,18 @@ the process of define a new endpoint pretty straightforward.
 The easiest way to install this package is by using composer from your terminal:
 
 ```bash
-composer require moxie-lean/wp-endpoint
+composer require nolte/wp-endpoint
 ```
 
 Or by adding the following lines on your `composer.json` file
 
 ```json
 "require": {
-  "moxie-lean/wp-endpoint": "dev-master"
+  "nolte/wp-endpoint": "dev-master"
 }
 ```
 
-This will download the files from the [packagist site](https://packagist.org/packages/moxie-lean/wp-endpoint)
+This will download the files from the [packagist site](https://packagist.org/packages/nolte/wp-endpoint)
 and set you up with the latest version located on master branch of the repository.
 
 After that you can include the `autoload.php` file in order to
@@ -42,7 +42,7 @@ After you added the dependency on your module you need to create a new class tha
 
 ```php
 <?php
-use Lean\AbstractEndpoint;
+use Nolte\AbstractEndpoint;
 
 class customEndpoint extends AbstractEndpoint {
 
@@ -98,9 +98,9 @@ For instance to define a new slug parameter with a different HTTP verb and reuse
 There is also an abstract class available for collections.
 
 ```php
-<?php namespace Lean\Endpoints;
+<?php namespace Nolte\Endpoints;
 
-use Lean\AbstractCollectionEndpoint;
+use Nolte\AbstractCollectionEndpoint;
 
 class MyCollection extends AbstractCollectionEndpoint {
 
@@ -130,7 +130,7 @@ class MyCollection extends AbstractCollectionEndpoint {
 
 ### Filters
 
-- `ln_endpoints_api_namespace`, This allow you to overwrite the default namespace used on the API definition.
-- `ln_endpoints_api_version`, This filter allow you to change the version number of the API.
-- `ln_endpoints_data_${api}`, where `${api}` is the name of your endpoint for instance in the case above: `ln_endpoints_data_customEndpoint`.
-- `ln_endpoints_collection_item`, to do custom formatting for collection items.
+- `nolte_endpoints_api_namespace`, This allow you to overwrite the default namespace used on the API definition.
+- `nolte_endpoints_api_version`, This filter allow you to change the version number of the API.
+- `nolte_endpoints_data_${api}`, where `${api}` is the name of your endpoint for instance in the case above: `nolte_endpoints_data_customEndpoint`.
+- `nolte_endpoints_collection_item`, to do custom formatting for collection items.

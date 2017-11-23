@@ -1,12 +1,12 @@
-<?php namespace Lean;
+<?php namespace Nolte;
 
-use Lean\AbstractEndpoint;
-use Lean\Endpoints\Filters;
+use Nolte\AbstractEndpoint;
+use Nolte\Endpoints\Filters;
 
 /**
  * Class that implements the behaviour of a collection of posts.
  *
- * @package Lean;
+ * @package Nolte;
  */
 abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 
