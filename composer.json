@@ -1,14 +1,20 @@
 {
-  "name": "moxie-lean/wp-endpoint",
+  "name": "nolte/wp-endpoint",
   "description": "wp-endpoint",
   "keywords": [],
-  "homepage": "https://github.com/moxie-lean/wp-endpoints-post/",
+  "homepage": "https://github.com/wearenolte/wp-endpoint",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
-      "name": "Moxie Developers",
-      "email": "developer@getmoxied.net"
+      "name": "Nolte",
+      "email": "developer@wearenolte.com",
+      "homepage": "https://wearenolte.com/"
+    },
+    {
+      "name": "Crisoforo Gaspar Hernandez",
+      "email": "hello@crisoforo.com",
+      "homepage": "https://crisoforo.com/"
     }
   ],
   "require": {
@@ -16,7 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Lean\\": "src/"
+      "Nolte\\": "src/"
     }
   },
   "require-dev": {
