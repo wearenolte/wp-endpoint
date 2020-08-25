@@ -102,6 +102,7 @@ abstract class AbstractEndpoint {
 		return [
 			'methods' => \WP_REST_Server::READABLE,
 			'callback' => [ $this, 'endpoint_callback' ],
+			'permission_callback' => '__return_true',
 			'args' => $this->endpoint_args(),
 		];
 	}
