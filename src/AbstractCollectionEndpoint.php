@@ -28,7 +28,7 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	 * @since 0.1.0
 	 *
 	 * @param \WP_REST_Request $request The request object that mimics the request
-	 *									made by the user.
+	 *                                  made by the user.
 	 * @return array The data to be delivered to the endpoint
 	 */
 	public function endpoint_callback( \WP_REST_Request $request ) {
@@ -50,7 +50,7 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	 * @param object $item The unformatted post object.
 	 */
 	protected function format_item( $item ) {
-		return apply_filters( Filter::ITEM_FORMAT, $item, $item, $this->args );
+		return apply_filters( Filters::ITEM_FORMAT, $item, $item, $this->args );
 	}
 
 	/**
@@ -64,7 +64,7 @@ abstract class AbstractCollectionEndpoint extends AbstractEndpoint {
 	 */
 	protected function get_pagination( $found, $pages ) {
 		$total = absint( $found );
-		$meta = [
+		$meta  = [
 			'items' => $total,
 			'pages' => 0,
 		];
