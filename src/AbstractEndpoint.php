@@ -25,8 +25,8 @@ abstract class AbstractEndpoint {
 	 * @since 0.1.0
 	 */
 	public static function init() {
-		$child = get_called_class();
-		$endpoint = new $child;
+		$child    = get_called_class();
+		$endpoint = new $child();
 		$endpoint->create();
 	}
 
@@ -47,7 +47,7 @@ abstract class AbstractEndpoint {
 	 */
 	private function set_variables() {
 		$this->namespace = apply_filters( Filters::API_NAMESPACE, 'nolte', $this->endpoint );
-		$this->version = apply_filters( Filters::API_VERSION, 'v2', $this->endpoint );
+		$this->version   = apply_filters( Filters::API_VERSION, 'v2', $this->endpoint );
 	}
 
 	/**
@@ -100,10 +100,10 @@ abstract class AbstractEndpoint {
 	 */
 	protected function endpoint_options() {
 		return [
-			'methods' => \WP_REST_Server::READABLE,
-			'callback' => [ $this, 'endpoint_callback' ],
+			'methods'             => \WP_REST_Server::READABLE,
+			'callback'            => [ $this, 'endpoint_callback' ],
 			'permission_callback' => '__return_true',
-			'args' => $this->endpoint_args(),
+			'args'                => $this->endpoint_args(),
 		];
 	}
 

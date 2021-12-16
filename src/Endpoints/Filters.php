@@ -7,7 +7,7 @@
  */
 class Filters {
 	const API_NAMESPACE = 'nolte_endpoints_api_namespace';
-	const API_VERSION = 'nolte_endpoints_api_version';
-	const API_DATA = 'nolte_endpoints_data';
-	const ITEM_FORMAT = 'nolte_endpoints_collection_item';
+	const API_VERSION   = 'nolte_endpoints_api_version';
+	const API_DATA      = 'nolte_endpoints_data';
+	const ITEM_FORMAT   = 'nolte_endpoints_collection_item';
 }
