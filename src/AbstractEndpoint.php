@@ -19,6 +19,20 @@ abstract class AbstractEndpoint {
 	protected $endpoint = '/nolte';
 
 	/**
+	 * API namespace for this endpoint.
+	 *
+	 * @var string
+	 */
+	protected $namespace = '';
+
+	/**
+	 * API version segment for this endpoint.
+	 *
+	 * @var string
+	 */
+	protected $version = '';
+
+	/**
 	 * Static method as user interface for the class that creates a new object
 	 * of this class to make sure we can access to instance properties and methods.
 	 *
@@ -115,7 +129,7 @@ abstract class AbstractEndpoint {
 	 * @since 0.1.0
 	 * @param \WP_REST_Request $request Contains data from the request.
 	 */
-	public function endpoint_callback( \WP_REST_Request $request ) {
+	public function endpoint_callback( \WP_REST_Request $request ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 		return [];
 	}
 
